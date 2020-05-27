@@ -3,7 +3,7 @@
 const suspectProtoRx = /"(?:_|\\u005[Ff])(?:_|\\u005[Ff])(?:p|\\u0070)(?:r|\\u0072)(?:o|\\u006[Ff])(?:t|\\u0074)(?:o|\\u006[Ff])(?:_|\\u005[Ff])(?:_|\\u005[Ff])"\s*:/
 const suspectConstructorRx = /"(?:c|\\u0063)(?:o|\\u006[Ff])(?:n|\\u006[Ee])(?:s|\\u0073)(?:t|\\u0074)(?:r|\\u0072)(?:u|\\u0075)(?:c|\\u0063)(?:t|\\u0074)(?:o|\\u006[Ff])(?:r|\\u0072)"\s*:/
 
-function parse (text, reviver, options) {
+export function parse (text, reviver, options) {
   // Normalize arguments
   if (options == null) {
     if (reviver !== null && typeof reviver === 'object') {
@@ -55,7 +55,7 @@ function parse (text, reviver, options) {
   return obj
 }
 
-function scan (obj, { protoAction = 'error', constructorAction = 'error' } = {}) {
+export function scan (obj, { protoAction = 'error', constructorAction = 'error' } = {}) {
   let next = [obj]
 
   while (next.length) {
@@ -89,7 +89,7 @@ function scan (obj, { protoAction = 'error', constructorAction = 'error' } = {})
   }
 }
 
-function safeParse (text, reviver) {
+export function safeParse (text, reviver) {
   try {
     return parse(text, reviver)
   } catch (ignoreError) {
