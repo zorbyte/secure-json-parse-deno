@@ -96,9 +96,3 @@ export function safeParse (text, reviver) {
     return null
   }
 }
-
-module.exports = {
-  parse,
-  scan,
-  safeParse
-}
